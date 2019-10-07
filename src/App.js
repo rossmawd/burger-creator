@@ -29,7 +29,8 @@ const app = props => {
         {name: 'Dave', age: 100},
         {name: 'Sam', age: 100}
 
-      ]
+      ],
+      otherState: personsState.otherState
     })
   }
 
@@ -39,8 +40,10 @@ const app = props => {
     <div className="App">
       <h1>Let's get started!</h1>
       <button onClick={switchNameHandler}>HELLO</button>
-      <Person {...personsState.persons[0]}></Person>
-      <Person {...personsState.persons[1]}></Person>
+      <Person 
+      {...personsState.persons[0]}></Person>
+      <Person
+       {...personsState.persons[1]}></Person>
 
     </div>
   );
