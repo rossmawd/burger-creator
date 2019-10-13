@@ -5,7 +5,7 @@ import './App.css';
 class App extends React.Component {
   state = {
     persons: [
-      { name: "ross", age: 35 },
+      { name: "Ross", age: 35 },
       { name: "Carol", age: 26 }
     ]
   }
@@ -21,9 +21,9 @@ class App extends React.Component {
 
   nameChangedHandler = (event) => {
     this.setState({
-      persons: [,
+      persons: [
         { name: event.target.value, age: 100 },
-        { name: 'Sam', age: 100 }]
+        { name: 'Carol', age: 26 }]
     })
   }
 
@@ -33,9 +33,7 @@ class App extends React.Component {
         <button onClick={() => this.switchNameHandler("SpoonFace")}>HELLO</button>
         <Person
           {...this.state.persons[0]}
-          changed={this.nameChangedHandler}
-        />
-
+          changed={this.nameChangedHandler} />
         <Person
           {...this.state.persons[1]}
           click={this.switchNameHandler.bind(this, "rimmer")}
