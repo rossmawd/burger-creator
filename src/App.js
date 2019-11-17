@@ -42,25 +42,32 @@ class App extends React.Component {
       cursor: 'pointer'
     }
 
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+        <Person
+          {...this.state.persons[0]}
+          changed={this.nameChangedHandler} />
+        <Person
+          {...this.state.persons[1]}
+          click={this.switchNameHandler.bind(this, "rimmer")}
+        />
+      </div>
+      );
+    }
+   
+
     return (
       //test change
       <div className="App">
         <button
           style={style}
           onClick={this.togglePersonHandler}>Toggle Persons</button>
-        {this.state.showPersons ?
-          <div>
-            <Person
-              {...this.state.persons[0]}
-              changed={this.nameChangedHandler} />
-            <Person
-              {...this.state.persons[1]}
-              click={this.switchNameHandler.bind(this, "rimmer")}
-            />
-          </div>
-          :
-          null
-        }
+      
+        {persons}
+        
 
       </div>
     );
