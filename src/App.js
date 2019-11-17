@@ -29,7 +29,7 @@ class App extends React.Component {
   }
 
   togglePersonHandler = () => {
-      this.setState({showPersons: !this.state.showPersons})
+    this.setState({ showPersons: !this.state.showPersons })
   }
 
   render() {
@@ -43,6 +43,7 @@ class App extends React.Component {
     }
 
     return (
+      //test change
       <div className="App">
         <button
           style={style}
