@@ -7,7 +7,8 @@ class App extends React.Component {
     persons: [
       { name: "Ross", age: 35 },
       { name: "Carol", age: 26 }
-    ]
+    ],
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -27,17 +28,39 @@ class App extends React.Component {
     })
   }
 
+  togglePersonHandler = () => {
+      this.setState({showPersons: !this.state.showPersons})
+  }
+
   render() {
+
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }
+
     return (
       <div className="App">
-        <button onClick={() => this.switchNameHandler("SpoonFace")}>HELLO</button>
-        <Person
-          {...this.state.persons[0]}
-          changed={this.nameChangedHandler} />
-        <Person
-          {...this.state.persons[1]}
-          click={this.switchNameHandler.bind(this, "rimmer")}
-        />
+        <button
+          style={style}
+          onClick={this.togglePersonHandler}>Toggle Persons</button>
+        {this.state.showPersons ?
+          <div>
+            <Person
+              {...this.state.persons[0]}
+              changed={this.nameChangedHandler} />
+            <Person
+              {...this.state.persons[1]}
+              click={this.switchNameHandler.bind(this, "rimmer")}
+            />
+          </div>
+          :
+          null
+        }
+
       </div>
     );
 
