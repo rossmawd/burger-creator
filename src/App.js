@@ -6,7 +6,8 @@ class App extends React.Component {
   state = {
     persons: [
       { name: "Ross", age: 35 },
-      { name: "Carol", age: 26 }
+      { name: "Carol", age: 26 },
+      { name: "Dave", age: 15 }
     ],
     showPersons: false
   }
@@ -47,13 +48,15 @@ class App extends React.Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-        <Person
-          {...this.state.persons[0]}
-          changed={this.nameChangedHandler} />
-        <Person
-          {...this.state.persons[1]}
-          click={this.switchNameHandler.bind(this, "rimmer")}
-        />
+{this.state.persons.map(person => {
+  return <Person 
+  {...person} 
+  changed={this.nameChangedHandler}
+  click={this.switchNameHandler.bind(this, "rimmer")}
+  />
+
+})}
+
       </div>
       );
     }
