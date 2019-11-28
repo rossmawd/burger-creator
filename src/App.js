@@ -12,14 +12,21 @@ class App extends React.Component {
     showPersons: false
   }
 
-  switchNameHandler = (newName) => {
-    console.log("I was clicked YO")
-    this.setState({
-      persons: [{ name: newName, age: 28 },
-      { name: 'Dave', age: 100 }
-      ]
-    })
+  deletePersonHandler = (i) => {
+    const persons = [...this.state.persons]
+    let dave = persons.splice(i, 1)
+    this.setState({persons: persons})
+    alert(dave[0].name)
   }
+
+  // switchNameHandler = (newName) => {
+  //   console.log("I was clicked YO")
+  //   this.setState({
+  //     persons: [{ name: newName, age: 28 },
+  //     { name: 'Dave', age: 100 }
+  //     ]
+  //   })
+  // }
 
   nameChangedHandler = (event) => {
     this.setState({
@@ -48,11 +55,11 @@ class App extends React.Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-{this.state.persons.map(person => {
+{this.state.persons.map((person, i) => {
   return <Person 
   {...person} 
-  changed={this.nameChangedHandler}
-  click={this.switchNameHandler.bind(this, "rimmer")}
+  // changed={this.nameChangedHandler}
+  click={() => this.deletePersonHandler(i)}
   />
 
 })}
